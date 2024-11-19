@@ -1,0 +1,794 @@
+    /* Estilo do corpo da página */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7fafc;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Animação do botão */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Estilos de navegação do banner de cookies */
+    .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #2f855a;
+        color: white;
+        padding: 10px 20px;
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        display: none; /* Inicialmente invisível */
+        flex-wrap: wrap;
+    }
+
+    .cookie-banner span {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .cookie-banner button {
+        background-color: #276749;
+        border: none;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .cookie-banner button:hover {
+        background-color: #22543d;
+    }
+
+    /* Botão de fechar no banner */
+    .close-banner {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* Quando o banner é fechado, ele desaparece */
+    .cookie-banner.closed {
+        display: none;
+    }
+
+    /* Ajustando a exibição do botão de "Prosseguir" */
+    .cookie-banner .btn-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        align-items: center;
+    }
+    .closed {
+    display: none !important; /* Adicionado o !important para garantir que ele seja ocultado */
+}
+
+ /* Estilo geral */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease; /* Transição suave para as mudanças */
+}
+
+#content-container {
+    padding: 20px;
+}
+
+h1, p {
+    margin: 0 0 15px;
+}
+
+.accessibility-logo {
+    position: fixed;
+    top: 53%;
+    right: 10px;
+    width: 40px;
+    height: 37px;
+    background-color: #007aff;
+    /* Cor de fundo vibrante */
+    border-radius: 8px;
+    /* Bordas arredondadas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.accessibility-logo:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+    /* Pequeno aumento no ícone ao passar o mouse */
+}
+
+.accessibility-logo img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Estilo do card de acessibilidade */
+.accessibility-card {
+    position: fixed;
+    top: 50%;
+    right: 100px;
+    /* Ajuste a distância à direita para que o card apareça ao lado do ícone */
+    transform: translateY(-50%);
+    width: 300px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+    transition: right 0.3s ease;
+    /* Suaviza a transição da posição do card */
+}
+
+/* Estilo do cabeçalho do card */
+.accessibility-card .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.accessibility-card .header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.accessibility-card .header .close-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accessibility-card .header .close-btn:hover {
+    background-color: #1E984F;
+    /* Cor de fundo ao passar o mouse */
+    color: white;
+    /* Cor do texto ao passar o mouse */
+}
+
+/* Estilos para os botões do card de acessibilidade */
+.accessibility-card button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #1E984F;
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accessibility-card button:hover {
+    background-color: #1E984F;
+    /* Cor mais escura para o hover */
+    transform: scale(1.05);
+    /* Aumento do botão ao passar o mouse */
+}
+
+/* Estilos dos botões de controle de fonte */
+.font-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.font-control button {
+    background-color: #4caf50;
+    /* Cor verde para aumentar/diminuir fonte */
+    font-size: 18px;
+}
+
+.font-control span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Layout do card de acessibilidade */
+.accessibility-card .reset-btn {
+    background-color: #2196f3;
+    /* Cor azul para o botão de reset */
+}
+
+.accessibility-card .reset-btn:hover {
+    background-color: #1976d2;
+    /* Cor mais escura para o reset */
+}
+
+
+/* Modos de acessibilidade */
+#content-container.monochrome {
+    filter: grayscale(100%);
+}
+
+body.high-contrast #content-container {
+    background-color: #000;
+    color: #fff;
+}
+
+body.low-contrast #content-container {
+    background-color: #eaeaea;
+    color: #666;
+}
+
+            /* Estilo para as setas de navegação */
+            .navigation-arrows {
+                position: absolute;
+                top: 50%;  /* Centraliza verticalmente */
+                width: 100%;
+                display: flex;
+                justify-content: space-between;  /* Espaço entre as setas */
+                transform: translateY(-50%);  /* Centraliza no eixo Y */
+            }
+        
+            .navigation-arrows label {
+                font-size: 30px;
+                color: white;
+                background: rgba(0, 0, 0, 0.5);
+                padding: 10px;
+                cursor: pointer;
+                transition: 0.3s;
+                border-radius: 50%;
+            }
+        
+            .navigation-arrows label:hover {
+                background: rgba(0, 0, 0, 0.8);
+            }
+        
+            .prev-slide {
+                margin-left: 20px;
+            }
+        
+            .next-slide {
+                margin-right: 20px;
+            }
+        
+            /* Slide container */
+            .slide_feito {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 50vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        
+            .slider {
+                margin: 0 auto;
+                width: 800px;
+                height: 400px;
+                overflow: hidden;
+                position: relative;
+            }
+        
+            .slides {
+                width: 300%;  /* Total de 3 imagens */
+                height: 400px;
+                display: flex;
+            }
+        
+            .slides input {
+                display: none;
+            }
+        
+            .slide {
+                width: 33.33%;  /* Cada slide ocupa 1/3 da largura */
+                position: relative;
+                transition: 2s;
+            }
+        
+            .slide img {
+                width: 800px;
+                height: 400px; /* Ajuste para manter a altura das imagens */
+                object-fit: cover; /* Isso garante que a imagem preencha a área corretamente */
+            }
+        
+            /* Manual navigation */
+            .manual-navigation {
+                position: absolute;
+                width: 800px;
+                margin-top: -40px;
+                display: flex;
+                justify-content: center;
+            }
+        
+            .manual-btn {
+                border: 2px solid black;
+                padding: 5px;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 1s;
+            }
+        
+            .manual-btn:not(:last-child) {
+                margin-right: 40px;
+            }
+        
+            .manual-btn:hover {
+                background-color: #fff;
+            }
+        
+            /* Controle de mudança de slide com rádio */
+            #radio1:checked ~ .first {
+                margin-left: 0;
+            }
+        
+            #radio2:checked ~ .first {
+                margin-left: -33.33%;
+            }
+        
+            #radio3:checked ~ .first {
+                margin-left: -66.66%;
+            }
+        
+            /* Estilo dos botões auto */
+            .navigation-auto div {
+                border: 2px solid #20a6ff;
+                padding: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 1s;
+            }
+        
+            .navigation-auto {
+                position: absolute;
+                width: 800px;
+                margin-top: 360px;
+                display: flex;
+                justify-content: center;
+            }
+        
+            .navigation-auto div:not(:last-child) {
+                margin-right: 40px;
+            }
+        
+            #radio1:checked ~ .navigation-auto .auto_btn1 {
+                background-color: #fff;
+            }
+        
+            #radio2:checked ~ .navigation-auto .auto_btn1 {
+                background-color: #fff;
+            }
+        
+            #radio3:checked ~ .navigation-auto .auto_btn1 {
+                background-color: #fff;
+            }
+        
+
+
+                        /* zoom na imagem logo senai apos passar o mouse*/
+                        .navbar-logo {
+                            transition: transform 0.3s ease; /* suavizar da animação */
+                        }
+                        
+                        .navbar-logo:hover {
+                            transform: scale(1.1); /* mudança do tamanho apos passar o mouse*/
+                        }
+                        
+                              
+                                li:hover {
+                                    transform: scale(1.3); /* Aumenta o tamanho do elemento em 10% */
+                                }
+                                ul {
+                                    list-style-type: none;
+                                }
+                        
+                                li {
+                                    display: inline-block;
+                                    
+                                    color: black;
+                                    cursor: pointer;
+                                    
+                                    transition: transform 0.2s ease, background-color 0.2s ease;
+                                }
+                        
+                                li:active {
+                                    transform: scale(0.95); /* Efeito de clique: encolhe um pouco */
+                                    
+                                }
+                               
+                        
+                                a {
+                                    text-decoration: none;
+                                    color: black;
+                                }
+                                    body {
+                                    font-family: Arial, sans-serif;
+                                }
+                                .main_text {
+                                    
+                                    padding: 20px;
+                                }
+                                #info-box {
+                               
+                                    margin: 20px auto;
+                                    padding: 20px;
+                                    border: 2px solid #000;
+                                    width: 50%;
+                                    background-color: #f4f4f4;
+                                    text-align: center;
+                                }
+                                button {
+                                    padding: 10px 20px;
+                                    background-color: #4CAF50;
+                                    color: white;
+                                    border: none;
+                                    cursor: pointer;
+                                    font-size: 16px;
+                                }
+                                button:hover {
+                                    background-color: #4CAF50;
+                                }
+                                    .loading-button {
+                                background-color: #4CAF50; /* Verde */
+                                border: none;
+                                color: white;
+                                padding: 15px 32px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 4px 2px;
+                                cursor: pointer;
+                                border-radius: 8px;
+                                position: relative;
+                                transition: background-color 0.3s;
+                            }
+                        
+                            .loading-button:disabled {
+                                background-color: #ccc;
+                                cursor: not-allowed;
+                            }
+                        
+                            .loading-button.loading {
+                                background-color: #f39c12; /* Laranja */
+                            }
+                        
+                            .loading-button.loading::after {
+                                content: '';
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                width: 20px;
+                                height: 20px;
+                                border: 3px solid white;
+                                border-top: 3px solid transparent;
+                                border-radius: 50%;
+                                animation: spin 0.6s linear infinite;
+                                transform: translate(-50%, -50%);
+                            }
+                        
+                            @keyframes spin {
+                                0% { transform: rotate(0deg); }
+                                100% { transform: rotate(360deg); }
+                            }
+                            .loading-button {
+                                background-color: #4CAF50; /* Verde */
+                                border: none;
+                                color: white;
+                                padding: 15px 50px; /* Aumenta o padding lateral */
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 4px 2px;
+                                cursor: pointer;/*apos o clique*/
+                                border-radius: 8px;
+                                position: relative;
+                                transition: background-color 0.3s, transform 0.3s; /* Adiciona animação ao botão */
+                            }
+                        
+                            .loading-button:hover {
+                                transform: scale(1.05); /* Aumenta o botão ao passar o mouse */
+                            }
+                        
+                            .loading-button:disabled {
+                                background-color: #ccc;
+                                cursor: not-allowed;
+                            }
+                        
+                            .loading-button.loading {
+                                background-color: #f39c12; /* Laranja */
+                            }
+                        
+                            .loading-button.loading::after {
+                                content: '';
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                width: 20px;
+                                height: 20px;
+                                border: 3px solid white;
+                                border-top: 3px solid transparent;
+                                border-radius: 50%;
+                                animation: spin 0.6s linear infinite;
+                                transform: translate(-50%, -50%);
+                            }
+                        
+                            @keyframes spin {
+                                0% { transform: rotate(0deg); }
+                                100% { transform: rotate(360deg); }
+                            }
+                            .loading-button {
+                                background-color: #4CAF50; /* Verde */
+                                border: none;
+                                color: white;
+                                padding: 15px 32px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 4px 2px;
+                                cursor: pointer;
+                                border-radius: 8px;
+                                position: relative;
+                                transition: background-color 0.3s, color 0.3s;
+                            }
+                            .gif-content img {
+                            width: 200px; /* Ajuste o valor conforme necessário */
+                            height: auto; /* Mantém a proporção da imagem */
+                            margin-left: -80px; /* Ajuste esse valor para mover a imagem mais perto do botão */
+                        }
+                        
+                            .loading-button.loading {
+                                background-color: #e74c3c; /* Vermelho */
+                            }
+                        
+                            .loading-button.loading::after {
+                                content: '';
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                width: 20px;
+                                height: 20px;
+                                border: 3px solid white;
+                                border-top: 3px solid transparent;
+                                border-radius: 50%;
+                                animation: spin 0.6s linear infinite;
+                                transform: translate(-50%, -50%);
+                            }
+                        
+                            @keyframes spin {
+                                0% { transform: rotate(0deg); }
+                                100% { transform: rotate(360deg); }
+                            }
+                        
+                            /* contato e numero integrados*/
+                            .contact-list {
+                            display: flex;
+                            list-style: none; /* Remove os marcadores da lista */
+                            padding: 0; /* Remove o padding */
+                            margin: 0; /* Remove a margem */
+                        }
+                        
+                        .contact-list li {
+                            margin-right: 10px; /* Adiciona espaço entre os itens, se desejado */
+                        }
+
+                        
+                        .copy2 {
+                            padding: 40px 0;
+                            /* Adiciona bastante espaço ao redor */
+                            background-color: white;
+                            /* Cor de fundo leve para destacar a área */
+                        }
+            
+                        .copy2 .container {
+                            max-width: 1200px;
+                            margin: 0 auto;
+                            text-align: center;
+                        }
+            
+                        .copy2 p {
+                            margin: 20px 0;
+                            /* Espaçamento entre as linhas de texto */
+                            font-size: 14px;
+                            /* Ajuste o tamanho da fonte conforme necessário */
+                            color: #333;
+                            /* Cor do texto */
+                        }
+            
+                        .copy2 a {
+                            color: #007acc;
+                            /* Cor dos links */
+                            text-decoration: none;
+                            margin: 0 10px;
+                            /* Espaçamento entre os links */
+                        }
+            
+                        .copy2 a:hover {
+                            text-decoration: underline;
+                        }
+
+                      
+            
+                        /* Estilo para as setas de navegação */
+                        .navigation-arrows {
+                            position: absolute;
+                            top: 50%;
+                            /* Centraliza verticalmente */
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            /* Espaço entre as setas */
+                            transform: translateY(-50%);
+                            /* Centraliza no eixo Y */
+                        }
+            
+                        .navigation-arrows label {
+                            font-size: 30px;
+                            color: white;
+                            background: rgba(0, 0, 0, 0.5);
+                            padding: 10px;
+                            cursor: pointer;
+                            transition: 0.3s;
+                            border-radius: 50%;
+                        }
+            
+                        .navigation-arrows label:hover {
+                            background: rgba(0, 0, 0, 0.8);
+                        }
+            
+                        .prev-slide {
+                            margin-left: 20px;
+                        }
+            
+                        .next-slide {
+                            margin-right: 20px;
+                        }
+            
+                        /* Slide container */
+                        .slide_feito {
+                            margin: 0;
+                            padding: 0;
+                            width: 100%;
+                            height: 50vh;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+            
+                        .slider {
+                            margin: 0 auto;
+                            width: 800px;
+                            height: 400px;
+                            overflow: hidden;
+                            position: relative;
+                        }
+            
+                        .slides {
+                            width: 300%;
+                            /* Total de 3 imagens */
+                            height: 400px;
+                            display: flex;
+                        }
+            
+                        .slides input {
+                            display: none;
+                        }
+            
+                        .slide {
+                            width: 33.33%;
+                            /* Cada slide ocupa 1/3 da largura */
+                            position: relative;
+                            transition: 2s;
+                        }
+            
+                        .slide img {
+                            width: 800px;
+                            height: 400px;
+                            /* Ajuste para manter a altura das imagens */
+                            object-fit: cover;
+                            /* Isso garante que a imagem preencha a área corretamente */
+                        }
+            
+                        /* Manual navigation */
+                        .manual-navigation {
+                            position: absolute;
+                            width: 800px;
+                            margin-top: -40px;
+                            display: flex;
+                            justify-content: center;
+                        }
+            
+                        .manual-btn {
+                            border: 2px solid black;
+                            padding: 5px;
+                            border-radius: 10px;
+                            cursor: pointer;
+                            transition: 1s;
+                        }
+            
+                        .manual-btn:not(:last-child) {
+                            margin-right: 40px;
+                        }
+            
+                        .manual-btn:hover {
+                            background-color: #fff;
+                        }
+            
+                        /* Controle de mudança de slide com rádio */
+                        #radio1:checked~.first {
+                            margin-left: 0;
+                        }
+            
+                        #radio2:checked~.first {
+                            margin-left: -33.33%;
+                        }
+            
+                        #radio3:checked~.first {
+                            margin-left: -66.66%;
+                        }
+            
+                        /* Estilo dos botões auto */
+                        .navigation-auto div {
+                            border: 2px solid #20a6ff;
+                            padding: 5px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: 1s;
+                        }
+            
+                        .navigation-auto {
+                            position: absolute;
+                            width: 800px;
+                            margin-top: 360px;
+                            display: flex;
+                            justify-content: center;
+                        }
+            
+                        .navigation-auto div:not(:last-child) {
+                            margin-right: 40px;
+                        }
+            
+                        #radio1:checked~.navigation-auto .auto_btn1 {
+                            background-color: #fff;
+                        }
+            
+                        #radio2:checked~.navigation-auto .auto_btn1 {
+                            background-color: #fff;
+                        }
+            
+                        #radio3:checked~.navigation-auto .auto_btn1 {
+                            background-color: #fff;
+                        }
