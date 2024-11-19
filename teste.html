@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API de Acessibilidade</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease; /* Transição suave para as mudanças */
+        }
+
+        #content-container {
+            padding: 20px;
+        }
+
+        h1, p {
+            margin: 0 0 15px;
+        }
+
+        /* Botão de acessibilidade (logo ao centro-direita, um pouco abaixo) */
+        .accessibility-logo {
+            position: fixed;
+            top: 60%;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #ff0000; /* Cor vermelha */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .accessibility-logo:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Sombra escura ao passar o mouse */
+        }
+
+        .accessibility-logo img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Card de acessibilidade */
+        .accessibility-card {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .accessibility-card .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .accessibility-card .header h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .accessibility-card .header .close-btn {
+            background: #f0f0f0; /* Cor de fundo visível */
+            border: 1px solid #ccc; /* Borda para destaque */
+            border-radius: 50%; /* Botão circular */
+            font-size: 16px; /* Fonte maior */
+            cursor: pointer;
+            padding: 1px;
+            line-height: 1;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .accessibility-card button {
+            padding: 2px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            background-color: #ff0000; /* Cor vermelha */
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accessibility-card button:hover {
+            background-color: #cc0000;
+        }
+
+        /* Controle de fonte */
+        .font-control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .font-control button {
+            flex: 0 0 auto;
+            padding: 5px 5px;
+            font-size: 14px;
+        }
+
+        .font-control span {
+            flex: 1;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Modos de acessibilidade */
+        #content-container.monochrome {
+            filter: grayscale(100%);
+        }
+
+        body.high-contrast #content-container {
+            background-color: #000;
+            color: #fff;
+        }
+
+        body.low-contrast #content-container {
+            background-color: #eaeaea;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Conteúdo da página -->
+    <div id="content-container">
+        <h1>Exemplo de Acessibilidade</h1>
+        <p>Este é um exemplo de como a API de acessibilidade pode ser aplicada a uma página da web.</p>
+    </div>
+
+    <!-- Ícone de acessibilidade -->
+    <div class="accessibility-logo" onclick="AccessibilityAPI.toggleCard()">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/hand.png" alt="Logo Acessibilidade">
+    </div>
+
+    <!-- Card de acessibilidade -->
+    <div class="accessibility-card" id="accessibilityCard">
+        <div class="header">
+            <h2>Acessibilidade</h2>
+            <button class="close-btn" onclick="AccessibilityAPI.closeCard()">✖</button>
+        </div>
+        <button onclick="AccessibilityAPI.setColorMode('high-contrast')">Alto Contraste</button>
+        <button onclick="AccessibilityAPI.setColorMode('low-contrast')">Contraste Reduzido</button>
+        <button onclick="AccessibilityAPI.setColorMode('monochrome')">Monocromático</button>
+        <div class="font-control">
+            <button onclick="AccessibilityAPI.decreaseFont()">-</button>
+            <span id="fontSizeDisplay">16px</span>
+            <button onclick="AccessibilityAPI.increaseFont()">+</button>
+        </div>
+        <button onclick="AccessibilityAPI.reset()">Resetar</button>
+    </div>
+
+    <script>
+        const AccessibilityAPI = (() => {
+            const state = {
+                fontSize: 16, // Tamanho base da fonte
+                cardVisible: false, // Estado do card
+                currentMode: '', // Armazena o modo de cor ativo
+            };
+
+            const updateFontSizeDisplay = () => {
+                document.getElementById('fontSizeDisplay').innerText = `${state.fontSize}px`;
+            };
+
+            return {
+                toggleCard: () => {
+                    const card = document.getElementById('accessibilityCard');
+                    state.cardVisible = !state.cardVisible;
+                    card.style.display = state.cardVisible ? 'flex' : 'none';
+                },
+
+                closeCard: () => {
+                    const card = document.getElementById('accessibilityCard');
+                    state.cardVisible = false;
+                    card.style.display = 'none';
+                },
+
+                setColorMode: (mode) => {
+                    const body = document.body;
+                    const content = document.getElementById('content-container');
+                    
+                    // Remove o modo anterior
+                    if (state.currentMode) {
+                        body.classList.remove(state.currentMode);
+                    }
+
+                    // Adiciona o novo modo, se for válido
+                    if (mode === 'high-contrast' || mode === 'low-contrast' || mode === 'monochrome') {
+                        body.classList.add(mode);
+                        state.currentMode = mode; // Atualiza o estado atual
+                    } else {
+                        state.currentMode = ''; // Reseta o modo
+                    }
+                },
+
+                increaseFont: () => {
+                    state.fontSize += 2;
+                    document.body.style.fontSize = `${state.fontSize}px`;
+                    updateFontSizeDisplay();
+                },
+
+                decreaseFont: () => {
+                    state.fontSize = Math.max(10, state.fontSize - 2); // Evita fonte muito pequena
+                    document.body.style.fontSize = `${state.fontSize}px`;
+                    updateFontSizeDisplay();
+                },
+
+                reset: () => {
+                    const body = document.body;
+                    const content = document.getElementById('content-container');
+                    
+                    // Remove todos os modos de cores
+                    if (state.currentMode) {
+                        body.classList.remove(state.currentMode);
+                    }
+                    state.currentMode = ''; // Reseta o modo
+
+                    // Reseta o tamanho da fonte
+                    state.fontSize = 16;
+                    content.style.fontSize = '';
+                    updateFontSizeDisplay();
+                },
+            };
+        })();
+    </script>
+</body>
+</html>

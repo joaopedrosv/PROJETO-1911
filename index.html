@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/givasico.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Source+Sans+Pro:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/aluno.css">
+    <script src="./js/svg-inject.min.js"></script>
+
+    <title>SENAI</title>
+</head>
+
+<body>
+
+    </head>
+
+    <body>
+        <!-- Banner de Cookies -->
+        <div class="cookie-banner" id="cookie-banner">
+            <span>O SENAI-SP utiliza cookies e outras tecnologias semelhantes para melhorar a sua experiência, de acordo
+                com a nossa Política de Privacidade e, ao continuar navegando, você concorda com estas condições.</span>
+            <div class="btn-wrapper">
+                <button id="accept-cookies">Prosseguir</button>
+                <button class="close-banner" id="close-banner">X</button>
+            </div>
+        </div>
+
+
+        <nav class="navbar"> <!-- Recarregar à página após clique-->
+            <img src="./img/senailogo.png" onclick="recarregarPagina()" style="height: 50%; height: 50%;"
+                class="navbar-logo" alt="logo" />
+            <ul class="navbar-list">
+                <!--mudança de página-->
+                <li onclick="window.location.href='index2.html';"><a href="#">Sobre nós</a></li>
+                <!--mudança de página-->
+
+            </ul>
+            <!---->
+
+            </head>
+
+            <body>
+
+                </ul>
+
+                <body>
+                    <div id="section-acessibility">
+                        <!DOCTYPE html>
+
+                        <style>
+                        </style>
+                        </head>
+
+                        <body>
+
+                            <!-- Ícone de acessibilidade -->
+                            <div class="accessibility-logo" onclick="AccessibilityAPI.toggleCard()">
+                                <img src="https://img.icons8.com/ios-filled/50/ffffff/hand.png"
+                                    alt="Logo Acessibilidade">
+                            </div>
+
+                            <!-- Card de acessibilidade -->
+                            <div class="accessibility-card" id="accessibilityCard">
+                                <div class="header">
+                                    <h2>Acessibilidade</h2>
+                                    <button class="close-btn" onclick="AccessibilityAPI.closeCard()">✖</button>
+                                </div>
+                                <button onclick="AccessibilityAPI.setColorMode('high-contrast')">Alto Contraste</button>
+                                <button onclick="AccessibilityAPI.setColorMode('low-contrast')">Contraste
+                                    Reduzido</button>
+                                <button onclick="AccessibilityAPI.setColorMode('monochrome')">Monocromático</button>
+                                <div class="font-control">
+                                    <button onclick="AccessibilityAPI.decreaseFont()">-</button>
+                                    <span id="fontSizeDisplay">16px</span>
+                                    <button onclick="AccessibilityAPI.increaseFont()">+</button>
+                                </div>
+                                <button onclick="AccessibilityAPI.reset()">Resetar</button>
+                            </div>
+                    </div>
+                </body>
+
+                <!--mudança de pagina a partir do clique na parte de cima-->
+
+                <div class="profile-dropdown">
+                    <div onclick="toggle()" class="profile-dropdown-btn">
+                        <div class="profile-img">
+                            <!-- Inserindo a imagem aqui -->
+
+                        </div>
+                        <p style="color: #000;"> Usuários</p>
+                        <span>
+
+                            <i class="fa-solid fa-angle-down"></i>
+
+                        </span>
+                    </div>
+                </div>
+
+
+                <ul class="profile-dropdown-list">
+                    <li class="profile-dropdown-list-item">
+                        <a href="index7perfil.html">
+                            <i class="fa-regular fa-user"></i>
+                            Perfil
+                        </a>
+                    </li>
+
+                    <hr>
+
+                    <li class="profile-dropdown-list-item">
+                        <a href="login.html">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            Sair
+                        </a>
+                    </li>
+
+                </ul>
+
+                </hr>
+                <!--O qual termina aqui-->
+                </ul>
+                </div>
+
+        </nav>
+
+        <header>
+            <div class="container">
+
+                <nav>
+                    <div class="logo">
+
+                    </div>
+
+                    <ul>
+
+                        <main>
+                            <!--parte de cima do layout-->
+                            <div class="main_text">
+                                <h1>Senai Controle - Controle de acesso</h1>
+                                <p>Seja bem-vindo ao nosso novo site de controle de acesso de alunos do Senai. Para
+                                    facilitar o controle de saídas de alunos, produzimos um aplicativo para facilitar.
+                                </p>
+                                <p>Para acessar clique abaixo:</p>
+                                <button onclick="mostrarInfo()">Clique aqui</button>
+
+                            </div>
+                        </main>
+            </div>
+        </header>
+
+        <div class="site-border">
+            <div class="slide_feito">
+                <div class="slider">
+                    <div class="slides">
+                        <!-- Inputs de rádio para navegação -->
+                        <input type="radio" name="radio-btn" id="radio1" checked>
+                        <input type="radio" name="radio-btn" id="radio2">
+                        <input type="radio" name="radio-btn" id="radio3">
+
+                        <!-- Slides -->
+                        <div class="slide first">
+                            <img src="./img/Bem-vindo.png" alt="imagem_1" />
+                        </div>
+                        <div class="slide double">
+                            <img src="./img/CURSOS.png" alt="imagem_2" />
+                        </div>
+                        <div class="slide tres">
+                            <img src="./img/imagem_preservar.png" alt="imagem_3" />
+                        </div>
+
+                        <!-- Adicionando setas de navegação -->
+                        <div class="navigation-arrows">
+                            <label for="radio1" class="prev-slide">&#8592;</label> <!-- seta esquerda -->
+                            <label for="radio2" class="next-slide">&#8594;</label> <!-- seta direita -->
+
+                        </div>
+
+                        <div class="navigation-auto">
+                            <div class="auto_btn1"></div>
+                            <div class="auto_btn2"></div>
+                            <div class="auto_btn3"></div>
+                        </div>
+                    </div>
+                    <div class="manual-navigation">
+                        <label for="radio1" class="manual-btn"></label>
+                        <label for="radio2" class="manual-btn"></label>
+                        <label for="radio3" class="manual-btn"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- layout principal meio página-->
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <div class="vlibras-plugin" role="region" aria-label="Tradução para Libras"></div>
+
+        <section class="aplicativosection">
+            <div class="flex-item-1" data-aos="fade-up" data-aos-delay="0">
+                <img src="./img/celularinicio.png">
+            </div>
+            <div class="flex-item-1" data-aos="fade-up" data-aos-delay="200">
+                <h5>Aplicativo Controle de acesso</h5>
+                <h2 class="mt-2">Tudo Digitalmente.</h2>
+                <p class="my-2">Nossa aplicativo e site digital vem para ajudar a todos. Acompanhe cada movimentação de
+                    saídas de alunos em sala de aula em tempo real. Tudo isso pelo site.</p>
+                <ul class="list mt-2 pt-2">
+                    <li class="list-item">
+                        <i class="fas fa-mobile-alt icon-style"></i>
+                        <strong>Tudo na palma da sua mão</strong>
+                        <p>Com nossa inovação, é possível realizar tudo de fácil acesso.</p>
+                    </li>
+                    <li class="list-item">
+                        <i class="fas fa-hourglass-half icon-style"></i>
+                        <strong>Sem filas ou burocracias</strong>
+                        <p>Nosso site e aplicativo permitem evitar filas e burocracias.</p>
+                    </li>
+                    <li class="list-item">
+                        <i class="fas fa-cogs icon-style"></i>
+                        <strong>Configure tudo no app</strong>
+                        <p>Nossa tecnologia é totalmente configurável para as necessidades do usuário.</p>
+                    </li>
+                </ul>
+                <div>
+                    <a href="#" class="link">Seguro e sem complicações</a>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <!--layout parte de baixo do aplicativo-->
+
+        <section class="contacto_info">
+            <div class="container">
+                <img src="img/senailogo.png" style="margin: 0; width: 12%; height: 5%;" alt="logo">
+                <div class="medias-socias">
+                </div>
+            </div>
+        </section>
+
+        <!-- fim page-->
+
+
+
+        <div class="copy2">
+            <div class="container">
+                <p>© 2024 SENAI. Todos os direitos reservados a Givas Company</p>
+
+            </div>
+        </div>
+
+
+
+        <script src="./js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <script src="./js/app.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+        <scrip src="./js/aluno.js"></scrip>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+ 
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+
+
+
+
+        <script>
+            //passar da pagina saiba mais
+            function mostrarInfo() {
+
+                document.body.classList.add('fade-out');
+
+
+                setTimeout(function () {
+                    window.location.href = 'index4.html';
+                }, 1); // 1000ms = 1 segundo
+            }
+            //recarregar página
+            function recarregarPagina() {
+                location.reload();
+            }
+            document.getElementById("loadingButton").addEventListener("click", function () {
+                this.classList.add("loading");
+                this.disabled = true; // Desabilita o botão durante o carregamento
+
+                // Simula um carregamento de 2 segundos
+                setTimeout(() => {
+                    this.classList.remove("loading");
+                    this.disabled = false; // Reabilita o botão
+                }, 2000);
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                // Fetching and displaying user status
+                fetch('http://localhost:3000/status-alunos')
+                    .then(response => response.json())
+                    .then(data => {
+                        data.sort((a, b) => {
+                            const order = {
+                                'fora_sala': 1,
+                                'aceito': 2,
+                                'solicitado': 3
+                            };
+                            return order[a.status] - order[b.status];
+                        });
+
+                        const tableBody = document.getElementById("usuariosTable");
+                        tableBody.innerHTML = "";
+
+                        data.forEach(usuario => {
+                            const row = document.createElement("tr");
+                            const nameCell = document.createElement("td");
+                            nameCell.textContent = usuario.nome;
+                            row.appendChild(nameCell);
+
+                            const statusCell = document.createElement("td");
+                            let statusSpan = document.createElement("span");
+                            let icon = document.createElement("i");
+                            icon.classList.add('status-icon');
+
+                            switch (usuario.status) {
+                                case "fora_sala":
+                                    statusSpan.textContent = "Fora de sala";
+                                    statusSpan.classList.add("status-fora");
+                                    icon.classList.add("fas", "fa-sign-out-alt");
+                                    break;
+                                case "aceito":
+                                    statusSpan.textContent = "Aceito";
+                                    statusSpan.classList.add("status-aceito");
+                                    icon.classList.add("fas", "fa-check-circle");
+                                    break;
+                                case "solicitado":
+                                    statusSpan.textContent = "Solicitado";
+                                    statusSpan.classList.add("status-solicitado");
+                                    icon.classList.add("fas", "fa-exclamation-circle");
+                                    break;
+                                default:
+                                    statusSpan.textContent = "Sem solicitação";
+                            }
+
+                            statusCell.appendChild(statusSpan);
+                            statusCell.appendChild(icon);
+                            row.appendChild(statusCell);
+                            tableBody.appendChild(row);
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar status dos alunos:", error));
+
+                // Fetching and handling requests to accept or reject
+                fetch('http://localhost:3000/aceitar-recusar')
+                    .then(response => response.json())
+                    .then(data => {
+                        const tableBody = document.getElementById("solicitacoesTable");
+                        tableBody.innerHTML = "";
+
+                        data.forEach(solicitacao => {
+                            const row = document.createElement("tr");
+                            const nameCell = document.createElement("td");
+                            nameCell.textContent = solicitacao.nome;
+                            row.appendChild(nameCell);
+
+                            const actionsCell = document.createElement("td");
+                            const acceptButton = document.createElement("button");
+                            acceptButton.textContent = "Aceitar";
+                            acceptButton.classList.add("aceitar");
+                            acceptButton.setAttribute("data-aluno-id", solicitacao.aluno_id);
+                            acceptButton.addEventListener("click", function () {
+                                const alunoId = this.getAttribute("data-aluno-id");
+                                fetch('http://localhost:3000/aceitar-solicitacao', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ alunoId })
+                                })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('Erro na resposta da rede');
+                                        }
+                                        return response.text();
+                                    })
+                                    .then(data => {
+                                        alert(data);
+                                        row.remove();
+                                    })
+                                    .catch(error => console.error('Erro ao aceitar solicitação:', error));
+                            });
+
+                            const rejectButton = document.createElement("button");
+                            rejectButton.textContent = "Recusar";
+                            rejectButton.classList.add("recusar");
+                            rejectButton.setAttribute("data-aluno-id", solicitacao.aluno_id);
+                            rejectButton.addEventListener("click", function () {
+                                const alunoId = this.getAttribute("data-aluno-id");
+                                fetch('http://localhost:3000/recusar-solicitacao', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ alunoId })
+                                })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('Erro na resposta da rede');
+                                        }
+                                        return response.text();
+                                    })
+                                    .then(data => {
+                                        alert(data);
+                                        row.remove();
+                                    })
+                                    .catch(error => console.error('Erro ao recusar solicitação:', error));
+                            });
+
+                            actionsCell.appendChild(acceptButton);
+                            actionsCell.appendChild(rejectButton);
+                            row.appendChild(actionsCell);
+                            tableBody.appendChild(row);
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar solicitações:", error));
+            });
+        </script>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const userIcon = document.getElementById('userIcon');
+                const dropdown = document.querySelector('.dropdown');
+
+                userIcon.addEventListener('click', function () {
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!userIcon.contains(event.target) && !dropdown.contains(event.target)) {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            });
+
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                fetch('http://localhost:3000/aceitar-recusar')
+                    .then(response => response.json())
+                    .then(data => {
+                        const tableBody = document.getElementById("solicitacoesTable");
+                        tableBody.innerHTML = ""; // Limpa a tabela antes de preenchê-la
+
+                        data.forEach(solicitacao => {
+                            const row = document.createElement("tr");
+
+                            // Coluna Nome
+                            const nameCell = document.createElement("td");
+                            nameCell.textContent = solicitacao.nome;
+                            row.appendChild(nameCell);
+
+                            // Coluna Ações (Aceitar e Recusar)
+                            const actionsCell = document.createElement("td");
+
+                            const acceptButton = document.createElement("button");
+                            acceptButton.textContent = "Aceitar";
+                            acceptButton.classList.add("aceitar");
+                            acceptButton.setAttribute("data-aluno-id", solicitacao.aluno_id);
+
+                            acceptButton.addEventListener("click", function () {
+                                const alunoId = this.getAttribute("data-aluno-id");
+
+                                fetch('http://localhost:3000/aceitar-solicitacao', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ alunoId })
+                                })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('Erro na resposta da rede');
+                                        }
+                                        return response.text();
+                                    })
+                                    .then(data => {
+                                        alert(data);
+                                        // Remove a linha da tabela após a aceitação
+                                        row.remove();
+                                    })
+                                    .catch(error => console.error('Erro ao aceitar solicitação:', error));
+                            });
+
+                            const rejectButton = document.createElement("button");
+                            rejectButton.textContent = "Recusar";
+                            rejectButton.classList.add("recusar");
+                            rejectButton.setAttribute("data-aluno-id", solicitacao.aluno_id);
+
+                            rejectButton.addEventListener("click", function () {
+                                const alunoId = this.getAttribute("data-aluno-id");
+
+                                fetch('http://localhost:3000/recusar-solicitacao', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ alunoId })
+                                })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('Erro na resposta da rede');
+                                        }
+                                        return response.text();
+                                    })
+                                    .then(data => {
+                                        alert(data);
+                                        // Remove a linha da tabela após a recusa
+                                        row.remove();
+                                    })
+                                    .catch(error => console.error('Erro ao recusar solicitação:', error));
+                            });
+
+                            actionsCell.appendChild(acceptButton);
+                            actionsCell.appendChild(rejectButton);
+                            row.appendChild(actionsCell);
+
+                            tableBody.appendChild(row);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao carregar solicitações:', error));
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                fetch('data.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        const tableBody = document.getElementById('usuariosTable');
+                        tableBody.innerHTML = ''; // Limpa o conteúdo atual
+
+                        data.forEach(row => {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `<td>${row.nome}</td>
+                                            <td><span class='status-solicitado'>Solicitado</span><i class='status-icon fas fa-exclamation-circle'></i></td>`;
+                            tableBody.appendChild(tr);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao carregar dados:', error));
+            });
+        </script>
+
+        <script>
+            AOS.init({
+                easing: 'ease-out-quart',
+                duration: 1000,
+                once: true,
+            });
+        </script>
+
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 'auto',
+                spaceBetween: 40,
+                grabCursor: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    type: 'progressbar',
+                },
+                navigation: {
+                    nextEl: '.button-next',
+                    prevEl: '.button-prev',
+                }
+            });
+        </script>
+
+        <script>
+            const splide = new Splide(".splide", {
+                type: "loop",
+                drag: "free",
+                focus: "center",
+                autoScroll: {
+                    speed: 10,
+                },
+                rewind: true,
+                pagination: false,
+            });
+            splide.mount();
+
+
+            //clique animação sobre nos
+            function handleClick() {
+                // Adiciona um pequeno delay para permitir que a animação seja vista
+                setTimeout(function () {
+                    window.location.href = 'index1.html';
+                }, 200); // 200ms de delay para ver o efeito de clique
+            }
+
+        </script>
+
+
+        <script>
+            let count = 1;
+            document.getElementById("radio1").checked = true;
+
+            setInterval(nextImage, 5000); // Chama a função nextImage a cada 5 segundos
+
+            function nextImage() {
+                count++;
+                if (count > 3) {
+                    count = 1;
+                }
+                document.getElementById("radio" + count).checked = true;
+            }
+        </script>
+
+        <script>
+            const AccessibilityAPI = (() => {
+                const state = {
+                    fontSize: 16,  // Valor padrão de fontSize
+                    cardVisible: false,
+                    currentMode: '',  // Modo de contraste ou monocromático atual
+                };
+
+                // Função para atualizar o display de tamanho da fonte
+                const updateFontSizeDisplay = () => {
+                    document.getElementById('fontSizeDisplay').innerText = `${state.fontSize}px`;
+                };
+
+                // Função para aplicar o modo de cor (monocromático, alto contraste, contraste reduzido)
+                const setColorMode = (mode) => {
+                    const body = document.body;
+
+                    // Se já houver um modo aplicado, remove
+                    if (state.currentMode) {
+                        body.classList.remove(state.currentMode);
+                    }
+
+                    // Se o modo for válido, aplica
+                    if (mode === 'high-contrast' || mode === 'low-contrast' || mode === 'monochrome') {
+                        body.classList.add(mode);
+                        state.currentMode = mode;
+                        localStorage.setItem('colorMode', mode);  // Salva a escolha no localStorage
+                    } else {
+                        state.currentMode = '';
+                        localStorage.removeItem('colorMode');  // Remove a escolha do localStorage
+                    }
+                };
+
+                // Função para aumentar o tamanho da fonte
+                const increaseFont = () => {
+                    state.fontSize += 2;
+                    document.body.style.fontSize = `${state.fontSize}px`;
+                    updateFontSizeDisplay();
+                    localStorage.setItem('fontSize', state.fontSize);  // Salva o novo tamanho da fonte
+                };
+
+                // Função para diminuir o tamanho da fonte
+                const decreaseFont = () => {
+                    state.fontSize = Math.max(10, state.fontSize - 2);
+                    document.body.style.fontSize = `${state.fontSize}px`;
+                    updateFontSizeDisplay();
+                    localStorage.setItem('fontSize', state.fontSize);  // Salva o novo tamanho da fonte
+                };
+
+                // Função para resetar as preferências
+                const reset = () => {
+                    const body = document.body;
+
+                    // Remove qualquer modo de cor
+                    if (state.currentMode) {
+                        body.classList.remove(state.currentMode);
+                    }
+
+                    state.currentMode = '';  // Reseta o modo de cor
+                    state.fontSize = 16;  // Reseta o tamanho da fonte
+                    document.body.style.fontSize = '';
+                    updateFontSizeDisplay();
+
+                    // Remove as preferências do localStorage
+                    localStorage.removeItem('colorMode');
+                    localStorage.removeItem('fontSize');
+                };
+
+                // Carregar preferências salvas do localStorage
+                const loadPreferences = () => {
+                    const savedMode = localStorage.getItem('colorMode');
+                    const savedFontSize = localStorage.getItem('fontSize');
+
+                    if (savedMode) {
+                        setColorMode(savedMode);  // Aplica o modo salvo
+                    }
+
+                    if (savedFontSize) {
+                        state.fontSize = parseInt(savedFontSize, 10);  // Aplica o tamanho de fonte salvo
+                        document.body.style.fontSize = `${state.fontSize}px`;
+                        updateFontSizeDisplay();
+                    }
+                };
+
+                // Chama a função de carregar preferências ao carregar a página
+                loadPreferences();
+
+                return {
+                    toggleCard: () => {
+                        const card = document.getElementById('accessibilityCard');
+                        state.cardVisible = !state.cardVisible;
+                        card.style.display = state.cardVisible ? 'block' : 'none';
+                    },
+
+                    closeCard: () => {
+                        const card = document.getElementById('accessibilityCard');
+                        state.cardVisible = false;
+                        card.style.display = 'none';
+                    },
+
+                    setColorMode,
+                    increaseFont,
+                    decreaseFont,
+                    reset
+                };
+            })();
+
+        </script>
+
+        <style>
+            /* Modo monocromático */
+            .monochrome {
+                background-color: #000;
+                color: #fff;
+            }
+
+            /* Alterar texto preto para branco, mas manter textos brancos como estão */
+            .monochrome * {
+                color: inherit;
+            }
+
+            /* Especificamente, vamos mudar os textos pretos para branco */
+            .monochrome p,
+            .monochrome h1,
+            .monochrome h2,
+            .monochrome h3,
+            .monochrome h4,
+            .monochrome h5,
+            .monochrome h6,
+            .monochrome li {
+                color: #fff;
+            }
+
+            /* Links, botões e campos de texto também em branco */
+            .monochrome a,
+            .monochrome button,
+            .monochrome input,
+            .monochrome textarea {
+                color: #fff;
+                border-color: #fff;
+            }
+
+            /* Deixar as imagens em escala de cinza */
+            .monochrome img {
+                filter: grayscale(100%);
+            }
+
+            /* Para o caso de elementos com fundo escuro, ajustar para garantir visibilidade */
+            .monochrome input,
+            .monochrome textarea {
+                background-color: #333;
+                color: #fff;
+            }
+
+            /* Ajustar cores específicas, como verde para tons de cinza no modo monocromático */
+            .monochrome .contacto_info {
+                color: #fff;
+                background-color: #444;
+            }
+
+            /* Caso outros elementos específicos também tenham cores (por exemplo, .button-green), você pode definir algo assim: */
+            .monochrome .button-green {
+                background-color: #777;
+                color: #fff;
+            }
+
+            /* Header */
+            header {
+                background-image: url(../img/bg-banner.svg);
+                background-size: cover;
+                background-attachment: fixed;
+            }
+
+            /* Aplicar filtro de escala de cinza apenas quando o modo monocromático for ativado */
+            .monochrome header {
+                filter: grayscale(100%);
+            }
+
+            /* Para ícones dentro de .accessibility-logo */
+            .monochrome .accessibility-logo img {
+                filter: grayscale(100%);
+            }
+
+            /* Para ícones dentro de .icon-style */
+            .monochrome .icon-style img {
+                filter: grayscale(100%);
+            }
+
+            .monochrome .aplicativosection h5 {
+                filter: grayscale(100%);
+                color: #777;
+                fill: #777;
+            }
+
+            .monochrome .accessibility-logo {
+                filter: grayscale(100%);
+                color: #777;
+                fill: #777;
+            }
+
+            .monochrome .icon-style {
+                filter: grayscale(100%);
+                color: #777;
+                fill: #777;
+            }
+
+            .monochrome .profile-img {
+                filter: grayscale(100%);
+                color: #777;
+                fill: #777;
+            }
+
+            .monochrome .accessibility-card button {
+                filter: grayscale(100%) !important;
+                fill: #777 !important;
+            }
+
+            /* Agora, para garantir que .aplicativosection .link fique em cinza */
+            .monochrome .aplicativosection .link {
+                color: #777 !important;
+                /* Cor do texto em cinza */
+                background-color: #444 !important;
+                /* Fundo em cinza */
+                border-color: #777 !important;
+                /* Borda em cinza, se houver */
+            }
+
+            /* Caso você queira um estado de hover também para os links */
+            .monochrome .aplicativosection .link:hover {
+                color: #fff !important;
+                /* Cor branca quando o link for hover */
+                background-color: #555 !important;
+                /* Fundo um pouco mais claro no hover */
+            }
+
+            /* Se estiver usando ícones de fonte, como Font Awesome ou similar, alterar a cor diretamente */
+            .monochrome .accessibility-logo,
+            .monochrome {
+                color: #777;
+                /* Ajuste para o tom de cinza desejado */
+            }
+
+            /* Para ícones SVG embutidos (se estiver usando SVGs diretamente no HTML), ajuste o fill */
+            .monochrome .accessibility-logo svg,
+            .monochrome svg {
+                fill: #777;
+                /* Ajuste para o tom de cinza desejado */
+            }
+
+            /* Modo Alto Contraste */
+            .high-contrast {
+                background-color: #000000;
+                /* Fundo preto */
+                color: #FFD700;
+                /* Texto amarelo */
+            }
+
+            .high-contrast * {
+                color: inherit;
+                /* Herda os fundos do modo */
+                border-color: inherit;
+                /* Herda as bordas do modo */
+            }
+
+            .high-contrast p,
+            .high-contrast h2,
+            .high-contrast h3,
+            .high-contrast h4,
+            .high-contrast h5,
+            .high-contrast h6,
+            .high-contrast li,
+            .high-contrast a,
+            .high-contrast button,
+            .high-contrast input,
+            .high-contrast .copy2 .high-contrast textarea {
+                color: #FFD700;
+                /* Texto amarelo */
+                background-color: #000000;
+                /* Fundo preto */
+                border-color: #FFD700;
+                /* Bordas amarelas */
+            }
+
+            .high-contrast .contacto_info {
+                color: #FFD700;
+                /* Amarelo */
+                background-color: #000000;
+                /* Preto */
+            }
+
+            .high-contrast .navbar-list li a {
+                color: #FFD700;
+                /* Amarelo */
+                background-color: #000000;
+                /* Preto */
+            }
+
+            .high-contrast .navbar {
+                color: #FFD700;
+                /* Amarelo */
+                background-color: #000000;
+                /* Preto */
+            }
+
+            .high-contrast h1 {
+                color: #FFD700;
+                /* Amarelo */
+                background-color: #000000;
+                /* Preto */
+            }
+
+            .high-contrast .copy2 {
+                color: #FFD700;
+                /* Amarelo */
+                background-color: #000000;
+                /* Preto */
+            }
+
+            .high-contrast .button-green {
+                background-color: #FFD700;
+                /* Amarelo */
+                color: #000000;
+                /* Preto */
+            }
+
+            /* Para ícones dentro de .accessibility-logo */
+            .high-contrast .accessibility-logo img,
+            .high-contrast .icon-style img {
+                filter: none;
+                /* Remover filtro para não afetar ícones */
+                color: #FFD700;
+                /* Amarelo */
+            }
+
+            /* Alteração de links */
+            .high-contrast .aplicativosection .link {
+                color: #FFD700 !important;
+                background-color: #000000 !important;
+                border-color: #FFD700 !important;
+            }
+
+            /* Modo de Contraste Reduzido */
+            .low-contrast {
+                background-color: #99ccff;
+                /* Azul claro */
+                color: #000000;
+                /* Preto */
+            }
+
+            .low-contrast .navbar {
+                background-color: #99ccff;
+                /* Azul claro */
+                color: #000000;
+                /* Preto */
+            }
+
+            .low-contrast * {
+                color: inherit;
+                /* Herda as cores do modo */
+                /* Herda os fundos do modo */
+                border-color: inherit;
+                /* Herda as bordas do modo */
+            }
+
+            /* Modo de Contraste Baixo (Low Contrast) */
+            /* Modo de Contraste Baixo (Low Contrast) */
+            .low-contrast header {
+                background-image:
+                    linear-gradient(to bottom, rgba(153, 204, 255, 0.4), rgba(0, 0, 0, 0)),
+                    /* Gradiente azul mais transparente */
+                    url(./img/bg-banner.svg);
+                background: linear-gradient(to bottom, rgba(153, 204, 255, 0.7), #000);
+                /* Gradiente azul claro com transparência */
+                background-size: cover;
+                background-attachment: fixed;
+            }
+
+
+
+            /* Modo de Alto Contraste (High Contrast) */
+            .high-contrast header {
+                background: linear-gradient(to bottom, #000, #FFFF00);
+                /* Gradiente preto para amarelo */
+                background-size: cover;
+                background-attachment: fixed;
+            }
+
+            .high-contrast .accessibility-logo {
+                background: linear-gradient(to bottom, #000, #FFFF00);
+                /* Gradiente preto para amarelo */
+                background-size: cover;
+                background-attachment: fixed;
+            }
+
+
+            .low-contrast .copy2 {
+                color: #000000;
+                /* Preto */
+                background-color: #b3e0ff;
+                /* Azul claro mais suave */
+                border-color: #99ccff;
+                /* Azul claro */
+            }
+
+            .low-contrast .accessibility-logo {
+                color: #000000;
+                /* Preto */
+                background-color: #b3e0ff;
+                /* Azul claro mais suave */
+                border-color: #99ccff;
+                /* Azul claro */
+            }
+
+
+
+            .low-contrast p,
+            .low-contrast h1,
+            .low-contrast h2,
+            .low-contrast h3,
+            .low-contrast h4,
+            .low-contrast h5,
+            .low-contrast h6,
+            .low-contrast li,
+            .low-contrast a,
+            .low-contrast button,
+            .low-contrast input,
+            .low-contrast textarea {
+                color: #000000;
+                /* Preto */
+                background-color: #b3e0ff;
+                /* Azul claro mais suave */
+                border-color: #99ccff;
+                /* Azul claro */
+            }
+
+            .low-contrast .contacto_info {
+                color: #000000;
+                /* Preto */
+                background-color: #cce0ff;
+                /* Azul mais suave */
+            }
+
+            .low-contrast .button-green {
+                background-color: #b3e0ff;
+                /* Azul suave */
+                color: #000000;
+                /* Preto */
+            }
+
+            /* Para ícones dentro de .accessibility-logo */
+            .low-contrast .accessibility-logo img,
+            .low-contrast .icon-style img {
+                filter: none;
+                /* Remover filtro */
+                color: #000000;
+                /* Preto */
+            }
+
+            /* Alteração de links */
+            .low-contrast .aplicativosection .link {
+                color: #000000 !important;
+                background-color: #b3e0ff !important;
+                border-color: #99ccff !important;
+            }
+
+            /* Garantir que a imagem no header seja visível também em alto contraste */
+            .high-contrast header {
+                filter: none !important;
+                /* Remove filtro para não afetar imagens no header */
+            }
+
+            /* Garantir que imagens não sejam afetadas nos modos de contraste */
+            .high-contrast img,
+            .low-contrast img {
+                filter: none !important;
+                /* Remover qualquer filtro de escala de cinza */
+            }
+
+            /* Garantir que os ícones também não sejam afetados por filtro */
+            .high-contrast .icon-style img,
+            .low-contrast .icon-style img {
+                filter: none !important;
+                /* Remover filtro */
+            }
+
+            /* Garantir que as imagens dentro do body não sejam afetadas por filtros */
+            .high-contrast body img,
+            .low-contrast body img {
+                filter: none !important;
+                /* Remover filtro de escala de cinza para imagens */
+            }
+
+            /* Modo Monocromático */
+            .monochrome {
+                background-color: #000;
+                color: #fff;
+            }
+
+            .monochrome * {
+                color: inherit;
+            }
+
+            .monochrome p,
+            .monochrome h1,
+            .monochrome h2,
+            .monochrome h3,
+            .monochrome h4,
+            .monochrome h5,
+            .monochrome h6,
+            .monochrome li {
+                color: #fff;
+            }
+
+            .monochrome a,
+            .monochrome button,
+            .monochrome input,
+            .monochrome textarea {
+                color: #fff;
+                border-color: #fff;
+            }
+
+            .monochrome img {
+                filter: grayscale(100%);
+                /* Aplica escala de cinza */
+            }
+
+            .monochrome .contacto_info {
+                color: #fff;
+                background-color: #444;
+            }
+
+            .monochrome .button-green {
+                background-color: #777;
+                color: #fff;
+            }
+
+            .monochrome header {
+                filter: grayscale(100%);
+            }
+
+            .monochrome .accessibility-logo img {
+                filter: grayscale(100%);
+                /* Aplica filtro de escala de cinza */
+            }
+
+            .monochrome .icon-style img {
+                filter: grayscale(100%);
+                /* Aplica filtro de escala de cinza */
+            }
+
+            .monochrome .aplicativosection h5 {
+                filter: grayscale(100%);
+                color: #777;
+                fill: #777;
+            }
+
+            .monochrome .accessibility-logo {
+                filter: grayscale(100%);
+                color: #777;
+                fill: #777;
+            }
+
+            .monochrome .icon-style {
+                filter: grayscale(100%);
+                color: #777;
+                fill: #777;
+            }
+
+            .monochrome .profile-img {
+                filter: grayscale(100%);
+                color: #777;
+                fill: #777;
+            }
+
+            .monochrome .accessibility-card button {
+                filter: grayscale(100%) !important;
+                fill: #777 !important;
+            }
+
+            /* Agora, para garantir que .aplicativosection .link fique em cinza */
+            .monochrome .aplicativosection .link {
+                color: #777 !important;
+                background-color: #444 !important;
+                border-color: #777 !important;
+            }
+
+            /* Caso você queira um estado de hover também para os links */
+            .monochrome .aplicativosection .link:hover {
+                color: #fff !important;
+                background-color: #555 !important;
+            }
+        </style>
+
+    </body>
+
+</html>

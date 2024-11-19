@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Cadastrar Usuário</h1>
+        <form id="cadastroForm" enctype="multipart/form-data">
+            <input type="text" name="nome" placeholder="Nome" required><br>
+            <input type="text" name="matricula" placeholder="Matrícula" required><br>
+            <select name="tipo_usuario" required>
+                <option value="">Selecione o tipo de usuário</option>
+                <option value="aluno">Aluno</option>
+                <option value="professor">Professor</option>
+            </select><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="senha" placeholder="Senha" required><br>
+            <input type="text" name="uid" placeholder="UID" required><br>
+            <input type="file" name="foto" accept="image/*"><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+
+            fetch("http://localhost:3000/cadastrar-usuario", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById("result");
+                if (data.success) {
+                    resultDiv.textContent = "Usuário cadastrado com sucesso!";
+                    resultDiv.style.color = "green";
+                } else {
+                    resultDiv.textContent = "Erro ao cadastrar usuário: " + data.message;
+                    resultDiv.style.color = "red";
+                }
+            })
+            .catch(error => console.error("Erro ao cadastrar usuário:", error));
+        });
+    </script>
+</body>
+</html>

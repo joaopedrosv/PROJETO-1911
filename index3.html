@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash Screen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="section-acessibility">
+        <!DOCTYPE html>
+
+        <style>
+        </style>
+        </head>
+
+        <body>
+
+            <!-- Ícone de acessibilidade -->
+            <div class="accessibility-logo" onclick="AccessibilityAPI.toggleCard()">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/hand.png"
+                    alt="Logo Acessibilidade">
+            </div>
+
+            <!-- Card de acessibilidade -->
+            <div class="accessibility-card" id="accessibilityCard">
+                <div class="header">
+                    <h2>Acessibilidade</h2>
+                    <button class="close-btn" onclick="AccessibilityAPI.closeCard()">✖</button>
+                </div>
+                <button onclick="AccessibilityAPI.setColorMode('high-contrast')">Alto Contraste</button>
+                <button onclick="AccessibilityAPI.setColorMode('low-contrast')">Contraste
+                    Reduzido</button>
+                <button onclick="AccessibilityAPI.setColorMode('monochrome')">Monocromático</button>
+                <div class="font-control">
+                    <button onclick="AccessibilityAPI.decreaseFont()">-</button>
+                    <span id="fontSizeDisplay">16px</span>
+                    <button onclick="AccessibilityAPI.increaseFont()">+</button>
+                </div>
+                <button onclick="AccessibilityAPI.reset()">Resetar</button>
+            </div>
+    </div>
+
+    <div class="loading-page">
+        <img src="./img/senailogo.png" alt="Logo" id="logo" />
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+        integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./script.js"></script>
+    <script>
+        gsap.fromTo(
+            "#logo",
+            { opacity: 0, scale: 0.8 },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                delay: 0.5,
+                ease: "expo.out",
+                onComplete: () => {
+                    gsap.to(".loading-page", {
+                        opacity: 0,
+                        duration: 1,
+                        delay: 0.5,
+                        onComplete: () => {
+                            document.querySelector(".loading-page").style.display = "none";  // Esconde o container
+                        }
+                    });
+                }
+            }
+        );
+
+        // Redireciona para index.html após 5 segundos
+        setTimeout(() => {
+            window.location.href = "index.html";  // Redireciona para index.html
+        }, 2000);  // 5000ms = 5 segundos
+    </script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Michroma", sans-serif;
+            height: 100vh;
+        }
+
+      
+
+        .loading-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #1E984F;  /* Cor de fundo da splash screen */
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            
+            z-index: 1000; /* Certifica-se de que está acima de outros elementos */
+        }
+
+        .loading-page img {
+            height: 150px;
+            width: auto;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .name-container {
+            height: 30px;
+            overflow: hidden;
+        }
+
+        
+    </style>
+
+<script>
+    const AccessibilityAPI = (() => {
+        const state = {
+            fontSize: 16,  // Valor padrão de fontSize
+            cardVisible: false,
+            currentMode: '',  // Modo de contraste ou monocromático atual
+        };
+
+        // Função para atualizar o display de tamanho da fonte
+        const updateFontSizeDisplay = () => {
+            document.getElementById('fontSizeDisplay').innerText = `${state.fontSize}px`;
+        };
+
+        // Função para aplicar o modo de cor (monocromático, alto contraste, contraste reduzido)
+        const setColorMode = (mode) => {
+            const body = document.body;
+
+            // Se já houver um modo aplicado, remove
+            if (state.currentMode) {
+                body.classList.remove(state.currentMode);
+            }
+
+            // Se o modo for válido, aplica
+            if (mode === 'high-contrast' || mode === 'low-contrast' || mode === 'monochrome') {
+                body.classList.add(mode);
+                state.currentMode = mode;
+                localStorage.setItem('colorMode', mode);  // Salva a escolha no localStorage
+            } else {
+                state.currentMode = '';
+                localStorage.removeItem('colorMode');  // Remove a escolha do localStorage
+            }
+        };
+
+        // Função para aumentar o tamanho da fonte
+        const increaseFont = () => {
+            state.fontSize += 2;
+            document.body.style.fontSize = `${state.fontSize}px`;
+            updateFontSizeDisplay();
+            localStorage.setItem('fontSize', state.fontSize);  // Salva o novo tamanho da fonte
+        };
+
+        // Função para diminuir o tamanho da fonte
+        const decreaseFont = () => {
+            state.fontSize = Math.max(10, state.fontSize - 2);
+            document.body.style.fontSize = `${state.fontSize}px`;
+            updateFontSizeDisplay();
+            localStorage.setItem('fontSize', state.fontSize);  // Salva o novo tamanho da fonte
+        };
+
+        // Função para resetar as preferências
+        const reset = () => {
+            const body = document.body;
+
+            // Remove qualquer modo de cor
+            if (state.currentMode) {
+                body.classList.remove(state.currentMode);
+            }
+
+            state.currentMode = '';  // Reseta o modo de cor
+            state.fontSize = 16;  // Reseta o tamanho da fonte
+            document.body.style.fontSize = '';
+            updateFontSizeDisplay();
+
+            // Remove as preferências do localStorage
+            localStorage.removeItem('colorMode');
+            localStorage.removeItem('fontSize');
+        };
+
+        // Carregar preferências salvas do localStorage
+        const loadPreferences = () => {
+            const savedMode = localStorage.getItem('colorMode');
+            const savedFontSize = localStorage.getItem('fontSize');
+
+            if (savedMode) {
+                setColorMode(savedMode);  // Aplica o modo salvo
+            }
+
+            if (savedFontSize) {
+                state.fontSize = parseInt(savedFontSize, 10);  // Aplica o tamanho de fonte salvo
+                document.body.style.fontSize = `${state.fontSize}px`;
+                updateFontSizeDisplay();
+            }
+        };
+
+        // Chama a função de carregar preferências ao carregar a página
+        loadPreferences();
+
+        return {
+            toggleCard: () => {
+                const card = document.getElementById('accessibilityCard');
+                state.cardVisible = !state.cardVisible;
+                card.style.display = state.cardVisible ? 'block' : 'none';
+            },
+
+            closeCard: () => {
+                const card = document.getElementById('accessibilityCard');
+                state.cardVisible = false;
+                card.style.display = 'none';
+            },
+
+            setColorMode,
+            increaseFont,
+            decreaseFont,
+            reset
+        };
+    })();
+
+</script>
+
+<style>
+    /* Modo monocromático */
+    .monochrome {
+        background-color: #000;
+        color: #fff;
+    }
+
+    /* Alterar texto preto para branco, mas manter textos brancos como estão */
+    .monochrome * {
+        color: inherit;
+    }
+
+    /* Especificamente, vamos mudar os textos pretos para branco */
+    .monochrome p,
+    .monochrome h1,
+    .monochrome h2,
+    .monochrome h3,
+    .monochrome h4,
+    .monochrome h5,
+    .monochrome h6,
+    .monochrome li {
+        color: #fff;
+    }
+
+    /* Links, botões e campos de texto também em branco */
+    .monochrome a,
+    .monochrome button,
+    .monochrome input,
+    .monochrome textarea {
+        color: #fff;
+        border-color: #fff;
+    }
+
+    /* Deixar as imagens em escala de cinza */
+    .monochrome img {
+        filter: grayscale(100%);
+    }
+
+    /* Para o caso de elementos com fundo escuro, ajustar para garantir visibilidade */
+    .monochrome input,
+    .monochrome textarea {
+        background-color: #333;
+        color: #fff;
+    }
+
+    /* Ajustar cores específicas, como verde para tons de cinza no modo monocromático */
+    .monochrome .contacto_info {
+        color: #fff;
+        background-color: #444;
+    }
+
+    /* Caso outros elementos específicos também tenham cores (por exemplo, .button-green), você pode definir algo assim: */
+    .monochrome .button-green {
+        background-color: #777;
+        color: #fff;
+    }
+
+    /* Header */
+    header {
+        background-image: url(../img/bg-banner.svg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    /* Aplicar filtro de escala de cinza apenas quando o modo monocromático for ativado */
+    .monochrome header {
+        filter: grayscale(100%);
+    }
+
+    /* Para ícones dentro de .accessibility-logo */
+    .monochrome .accessibility-logo img {
+        filter: grayscale(100%);
+    }
+
+    /* Para ícones dentro de .icon-style */
+    .monochrome .icon-style img {
+        filter: grayscale(100%);
+    }
+
+    .monochrome .aplicativosection h5 {
+        filter: grayscale(100%);
+        color: #777;
+        fill: #777;
+    }
+
+    .monochrome .accessibility-logo {
+        filter: grayscale(100%);
+        color: #777;
+        fill: #777;
+    }
+
+    .monochrome .icon-style {
+        filter: grayscale(100%);
+        color: #777;
+        fill: #777;
+    }
+
+    .monochrome .profile-img {
+        filter: grayscale(100%);
+        color: #777;
+        fill: #777;
+    }
+
+    .monochrome .accessibility-card button {
+        filter: grayscale(100%) !important;
+        fill: #777 !important;
+    }
+
+    /* Agora, para garantir que .aplicativosection .link fique em cinza */
+    .monochrome .aplicativosection .link {
+        color: #777 !important;
+        /* Cor do texto em cinza */
+        background-color: #444 !important;
+        /* Fundo em cinza */
+        border-color: #777 !important;
+        /* Borda em cinza, se houver */
+    }
+
+    /* Caso você queira um estado de hover também para os links */
+    .monochrome .aplicativosection .link:hover {
+        color: #fff !important;
+        /* Cor branca quando o link for hover */
+        background-color: #555 !important;
+        /* Fundo um pouco mais claro no hover */
+    }
+
+    /* Se estiver usando ícones de fonte, como Font Awesome ou similar, alterar a cor diretamente */
+    .monochrome .accessibility-logo,
+    .monochrome {
+        color: #777;
+        /* Ajuste para o tom de cinza desejado */
+    }
+
+    /* Para ícones SVG embutidos (se estiver usando SVGs diretamente no HTML), ajuste o fill */
+    .monochrome .accessibility-logo svg,
+    .monochrome svg {
+        fill: #777;
+        /* Ajuste para o tom de cinza desejado */
+    }
+
+    /* Modo Alto Contraste */
+    .high-contrast {
+        background-color: #000000;
+        /* Fundo preto */
+        color: #FFD700;
+        /* Texto amarelo */
+    }
+
+    .high-contrast * {
+        color: inherit;
+        /* Herda os fundos do modo */
+        border-color: inherit;
+        /* Herda as bordas do modo */
+    }
+
+    .high-contrast p,
+    .high-contrast h2,
+    .high-contrast h3,
+    .high-contrast h4,
+    .high-contrast h5,
+    .high-contrast h6,
+    .high-contrast li,
+    .high-contrast a,
+    .high-contrast button,
+    .high-contrast input,
+    .high-contrast .copy2 .high-contrast textarea {
+        color: #FFD700;
+        /* Texto amarelo */
+        background-color: #000000;
+        /* Fundo preto */
+        border-color: #FFD700;
+        /* Bordas amarelas */
+    }
+
+    .high-contrast .contacto_info {
+        color: #FFD700;
+        /* Amarelo */
+        background-color: #000000;
+        /* Preto */
+    }
+
+    .high-contrast .navbar-list li a {
+        color: #FFD700;
+        /* Amarelo */
+        background-color: #000000;
+        /* Preto */
+    }
+
+    .high-contrast .navbar {
+        color: #FFD700;
+        /* Amarelo */
+        background-color: #000000;
+        /* Preto */
+    }
+
+    .high-contrast h1 {
+        color: #FFD700;
+        /* Amarelo */
+        background-color: #000000;
+        /* Preto */
+    }
+
+    .high-contrast .copy2 {
+        color: #FFD700;
+        /* Amarelo */
+        background-color: #000000;
+        /* Preto */
+    }
+
+    .high-contrast .button-green {
+        background-color: #FFD700;
+        /* Amarelo */
+        color: #000000;
+        /* Preto */
+    }
+
+    /* Para ícones dentro de .accessibility-logo */
+    .high-contrast .accessibility-logo img,
+    .high-contrast .icon-style img {
+        filter: none;
+        /* Remover filtro para não afetar ícones */
+        color: #FFD700;
+        /* Amarelo */
+    }
+
+    /* Alteração de links */
+    .high-contrast .aplicativosection .link {
+        color: #FFD700 !important;
+        background-color: #000000 !important;
+        border-color: #FFD700 !important;
+    }
+
+    /* Modo de Contraste Reduzido */
+    .low-contrast {
+        background-color: #99ccff;
+        /* Azul claro */
+        color: #000000;
+        /* Preto */
+    }
+
+    .low-contrast .navbar {
+        background-color: #99ccff;
+        /* Azul claro */
+        color: #000000;
+        /* Preto */
+    }
+
+    .low-contrast * {
+        color: inherit;
+        /* Herda as cores do modo */
+        /* Herda os fundos do modo */
+        border-color: inherit;
+        /* Herda as bordas do modo */
+    }
+
+    /* Modo de Contraste Baixo (Low Contrast) */
+    /* Modo de Contraste Baixo (Low Contrast) */
+    .low-contrast header {
+        background-image:
+            linear-gradient(to bottom, rgba(153, 204, 255, 0.4), rgba(0, 0, 0, 0)),
+            /* Gradiente azul mais transparente */
+            url(./img/bg-banner.svg);
+        background: linear-gradient(to bottom, rgba(153, 204, 255, 0.7), #000);
+        /* Gradiente azul claro com transparência */
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+
+
+    /* Modo de Alto Contraste (High Contrast) */
+    .high-contrast header {
+        background: linear-gradient(to bottom, #000, #FFFF00);
+        /* Gradiente preto para amarelo */
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    .high-contrast .accessibility-logo {
+        background: linear-gradient(to bottom, #000, #FFFF00);
+        /* Gradiente preto para amarelo */
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+
+    .low-contrast .copy2 {
+        color: #000000;
+        /* Preto */
+        background-color: #b3e0ff;
+        /* Azul claro mais suave */
+        border-color: #99ccff;
+        /* Azul claro */
+    }
+
+    .low-contrast .accessibility-logo {
+        color: #000000;
+        /* Preto */
+        background-color: #b3e0ff;
+        /* Azul claro mais suave */
+        border-color: #99ccff;
+        /* Azul claro */
+    }
+
+
+
+    .low-contrast p,
+    .low-contrast h1,
+    .low-contrast h2,
+    .low-contrast h3,
+    .low-contrast h4,
+    .low-contrast h5,
+    .low-contrast h6,
+    .low-contrast li,
+    .low-contrast a,
+    .low-contrast button,
+    .low-contrast input,
+    .low-contrast textarea {
+        color: #000000;
+        /* Preto */
+        background-color: #b3e0ff;
+        /* Azul claro mais suave */
+        border-color: #99ccff;
+        /* Azul claro */
+    }
+
+    .low-contrast .contacto_info {
+        color: #000000;
+        /* Preto */
+        background-color: #cce0ff;
+        /* Azul mais suave */
+    }
+
+    .low-contrast .button-green {
+        background-color: #b3e0ff;
+        /* Azul suave */
+        color: #000000;
+        /* Preto */
+    }
+
+    /* Para ícones dentro de .accessibility-logo */
+    .low-contrast .accessibility-logo img,
+    .low-contrast .icon-style img {
+        filter: none;
+        /* Remover filtro */
+        color: #000000;
+        /* Preto */
+    }
+
+    /* Alteração de links */
+    .low-contrast .aplicativosection .link {
+        color: #000000 !important;
+        background-color: #b3e0ff !important;
+        border-color: #99ccff !important;
+    }
+
+    /* Garantir que a imagem no header seja visível também em alto contraste */
+    .high-contrast header {
+        filter: none !important;
+        /* Remove filtro para não afetar imagens no header */
+    }
+
+    /* Garantir que imagens não sejam afetadas nos modos de contraste */
+    .high-contrast img,
+    .low-contrast img {
+        filter: none !important;
+        /* Remover qualquer filtro de escala de cinza */
+    }
+
+    /* Garantir que os ícones também não sejam afetados por filtro */
+    .high-contrast .icon-style img,
+    .low-contrast .icon-style img {
+        filter: none !important;
+        /* Remover filtro */
+    }
+
+    /* Garantir que as imagens dentro do body não sejam afetadas por filtros */
+    .high-contrast body img,
+    .low-contrast body img {
+        filter: none !important;
+        /* Remover filtro de escala de cinza para imagens */
+    }
+
+    /* Modo Monocromático */
+    .monochrome {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .monochrome * {
+        color: inherit;
+    }
+
+    .monochrome p,
+    .monochrome h1,
+    .monochrome h2,
+    .monochrome h3,
+    .monochrome h4,
+    .monochrome h5,
+    .monochrome h6,
+    .monochrome li {
+        color: #fff;
+    }
+
+    .monochrome a,
+    .monochrome button,
+    .monochrome input,
+    .monochrome textarea {
+        color: #fff;
+        border-color: #fff;
+    }
+
+    .monochrome img {
+        filter: grayscale(100%);
+        /* Aplica escala de cinza */
+    }
+
+    .monochrome .contacto_info {
+        color: #fff;
+        background-color: #444;
+    }
+
+    .monochrome .button-green {
+        background-color: #777;
+        color: #fff;
+    }
+
+    .monochrome header {
+        filter: grayscale(100%);
+    }
+
+    .monochrome .accessibility-logo img {
+        filter: grayscale(100%);
+        /* Aplica filtro de escala de cinza */
+    }
+
+    .monochrome .icon-style img {
+        filter: grayscale(100%);
+        /* Aplica filtro de escala de cinza */
+    }
+
+    .monochrome .aplicativosection h5 {
+        filter: grayscale(100%);
+        color: #777;
+        fill: #777;
+    }
+
+    .monochrome .accessibility-logo {
+        filter: grayscale(100%);
+        color: #777;
+        fill: #777;
+    }
+
+    .monochrome .icon-style {
+        filter: grayscale(100%);
+        color: #777;
+        fill: #777;
+    }
+
+    .monochrome .profile-img {
+        filter: grayscale(100%);
+        color: #777;
+        fill: #777;
+    }
+
+    .monochrome .accessibility-card button {
+        filter: grayscale(100%) !important;
+        fill: #777 !important;
+    }
+
+    /* Agora, para garantir que .aplicativosection .link fique em cinza */
+    .monochrome .aplicativosection .link {
+        color: #777 !important;
+        background-color: #444 !important;
+        border-color: #777 !important;
+    }
+
+    /* Caso você queira um estado de hover também para os links */
+    .monochrome .aplicativosection .link:hover {
+        color: #fff !important;
+        background-color: #555 !important;
+    }
+
+
+    .accessibility-logo {
+        position: fixed;
+        top: 53%;
+        right: 10px;
+        width: 40px;
+        height: 37px;
+        background-color: #007aff;
+        /* Cor de fundo vibrante */
+        border-radius: 8px;
+        /* Bordas arredondadas */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    .accessibility-logo:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        transform: scale(1.1);
+        /* Pequeno aumento no ícone ao passar o mouse */
+    }
+
+    .accessibility-logo img {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Estilo do card de acessibilidade */
+    .accessibility-card {
+        position: fixed;
+        top: 50%;
+        right: 100px;
+        /* Ajuste a distância à direita para que o card apareça ao lado do ícone */
+        transform: translateY(-50%);
+        width: 300px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 1000;
+        font-family: 'Arial', sans-serif;
+        transition: right 0.3s ease;
+        /* Suaviza a transição da posição do card */
+    }
+
+    /* Estilo do cabeçalho do card */
+    .accessibility-card .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .accessibility-card .header h2 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .accessibility-card .header .close-btn {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        font-size: 18px;
+        padding: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .accessibility-card .header .close-btn:hover {
+        background-color: #1E984F;
+        /* Cor de fundo ao passar o mouse */
+        color: white;
+        /* Cor do texto ao passar o mouse */
+    }
+
+    /* Estilos para os botões do card de acessibilidade */
+    .accessibility-card button {
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        background-color: #1E984F;
+        color: white;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .accessibility-card button:hover {
+        background-color: #1E984F;
+        /* Cor mais escura para o hover */
+        transform: scale(1.05);
+        /* Aumento do botão ao passar o mouse */
+    }
+
+    /* Estilos dos botões de controle de fonte */
+    .font-control {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .font-control button {
+        background-color: #4caf50;
+        /* Cor verde para aumentar/diminuir fonte */
+        font-size: 18px;
+    }
+
+    .font-control span {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Layout do card de acessibilidade */
+    .accessibility-card .reset-btn {
+        background-color: #2196f3;
+        /* Cor azul para o botão de reset */
+    }
+
+    .accessibility-card .reset-btn:hover {
+        background-color: #1976d2;
+        /* Cor mais escura para o reset */
+    }
+
+
+    /* Modos de acessibilidade */
+    #content-container.monochrome {
+        filter: grayscale(100%);
+    }
+
+    body.high-contrast #content-container {
+        background-color: #000;
+        color: #fff;
+    }
+
+    body.low-contrast #content-container {
+        background-color: #eaeaea;
+        color: #666;
+    }
+</style>
+</body>
+
+</html>
